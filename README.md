@@ -1,4 +1,4 @@
-# e_commercial
+# LPG Agency Finder
 
-An e-commerce assignment app
+A LPG Agency Finder assignment app made with FLutter.
 
