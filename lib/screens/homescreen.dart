@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void addrToCoord() async {
-    GeoCode geoCode = GeoCode(apiKey: "204641088467641194307x117388");
+    GeoCode geoCode = GeoCode(apiKey: "#APIKEYHERE");
     try {
       Coordinates coordinates =
           await geoCode.forwardGeocoding(address: s1 + ", " + s2 + ", " + s3);
