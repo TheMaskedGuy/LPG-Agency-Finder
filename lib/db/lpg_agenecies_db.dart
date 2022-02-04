@@ -44,7 +44,6 @@ class AgencyDB {
   Future readAgencyList() async {
     final db = await instance.database;
     final result = await db.query(agencyTableName);
-
     return result;
   }
 

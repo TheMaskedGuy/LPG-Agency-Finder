@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   List agencyListBuffer = [];
   List<LPGAgency> agencyListFinal = [];
 
-  void getLocationFinal() async {
+  Future getLocationFinal() async {
     Position _usrLocation = await Location().getLocation();
     usrLatitude = _usrLocation.latitude;
     usrLongitude = _usrLocation.longitude;
@@ -184,7 +184,7 @@ class _HomePageState extends State<HomePage> {
                   child: MaterialButton(
                       color: Colors.blue,
                       onPressed: () async {
-                        getLocationFinal();
+                        await getLocationFinal();
                         await loadAgencyList();
 
                         Navigator.push(

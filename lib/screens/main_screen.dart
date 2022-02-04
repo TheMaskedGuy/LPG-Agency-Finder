@@ -25,7 +25,7 @@ class MainPage extends StatelessWidget {
           1000;
 
       //To check for within 50Km range
-      if (distance < 50) continue;
+      if (distance > 50) continue;
 
       infoTile.add(ListTile(
         title: Text(
