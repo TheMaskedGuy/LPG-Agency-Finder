@@ -184,7 +184,13 @@ class _HomePageState extends State<HomePage> {
                   child: MaterialButton(
                       color: Colors.blue,
                       onPressed: () async {
+                        setState(() {
+                          isLoading = true;
+                        });
                         await getLocationFinal();
+                        setState(() {
+                          isLoading = false;
+                        });
                         await loadAgencyList();
 
                         Navigator.push(
