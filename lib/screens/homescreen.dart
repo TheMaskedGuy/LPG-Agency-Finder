@@ -22,10 +22,11 @@ class _HomePageState extends State<HomePage> {
   List agencyListBuffer = [];
   List<LPGAgency> agencyListFinal = [];
 
-  Future getLocationFinal() async {
+  Future<Position> getLocationFinal() async {
     Position _usrLocation = await Location().getLocation();
     usrLatitude = _usrLocation.latitude;
     usrLongitude = _usrLocation.longitude;
+    return _usrLocation;
   }
 
   void addrToCoord() async {
@@ -187,21 +188,25 @@ class _HomePageState extends State<HomePage> {
                         setState(() {
                           isLoading = true;
                         });
-                        await getLocationFinal();
+                        try {
+                          await getLocationFinal();
+                          await loadAgencyList();
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MainPage(
+                                  agencyList: agencyListFinal,
+                                  usrLong: usrLongitude,
+                                  usrLat: usrLatitude,
+                                ),
+                              ));
+                        } catch (e) {
+                          SnackBar snackBar = SnackBar(content: Text('$e'));
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        }
                         setState(() {
                           isLoading = false;
                         });
-                        await loadAgencyList();
-
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => MainPage(
-                                agencyList: agencyListFinal,
-                                usrLong: usrLongitude,
-                                usrLat: usrLatitude,
-                              ),
-                            ));
                       },
                       child: const Text(
                         'LPG Near Me',
