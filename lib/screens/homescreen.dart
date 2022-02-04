@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void addrToCoord() async {
-    GeoCode geoCode = GeoCode(apiKey: "#APIKEYHERE");
+    GeoCode geoCode = GeoCode(apiKey: "204641088467641194307x117388");
     try {
       Coordinates coordinates =
           await geoCode.forwardGeocoding(address: s1 + ", " + s2 + ", " + s3);
@@ -87,8 +87,36 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(
-                  height: 15.0,
+                const Padding(
+                  padding: EdgeInsets.only(top: 10.0),
+                  child: Text(
+                    '─────── Personal Information ───────',
+                    style: TextStyle(fontSize: 15.0, color: Colors.blue),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(8),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        hintText: 'Enter Your Name', labelText: 'Name'),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(8),
+                  child: TextField(
+                    keyboardType: TextInputType.numberWithOptions(),
+                    decoration: InputDecoration(
+                        hintText: 'Enter Your Phone Number',
+                        labelText: 'Phone Number'),
+                  ),
+                ),
+
+                const Padding(
+                  padding: EdgeInsets.only(top: 20.0),
+                  child: Text(
+                    '─────── Address ───────',
+                    style: TextStyle(fontSize: 15.0, color: Colors.blue),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8),

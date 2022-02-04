@@ -24,6 +24,9 @@ class MainPage extends StatelessWidget {
               usrLat, usrLong, currentAgency.lat, currentAgency.long) /
           1000;
 
+      //To check for within 50Km range
+      if (distance < 50) continue;
+
       infoTile.add(ListTile(
         title: Text(
           'Name: ${currentAgency.name}\nDistance: ${distance.toStringAsFixed(1)} km',
